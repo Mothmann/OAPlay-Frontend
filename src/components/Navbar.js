@@ -5,6 +5,11 @@ import {signOut} from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import {auth} from "../firebase-config"
 
+import './css/animate.min.css'
+import './css/aos.css'
+import './css/main.css'
+import './css/home.css'
+
 export default function Navbar() {
 
   const {toggleModals} = useContext(UserContext)
@@ -21,12 +26,14 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-light bg-light px-4">
-      <Link to="/" className="navbar-brand">
-        AuthJS 
+    <nav>
+    <div class="container">
+    <div class="auth nav-content d-flex align-items-center">
+      <Link to="/" className="logo text-light d-flex align-items-center">
+            <i class="fas fa-gamepad"></i>
+            <h3 class="m-0">OA<span>Play</span></h3>
       </Link>
-
-      <div>
+  
         <button 
         onClick={() => toggleModals("signUp")}
         className="btn btn-primary">
@@ -42,6 +49,7 @@ export default function Navbar() {
         className="btn btn-danger ms-2">
           Log Out
         </button>
+        </div>
       </div>
     </nav>
   )
