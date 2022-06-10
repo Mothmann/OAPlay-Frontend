@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 import {signOut} from "firebase/auth"
 import { useNavigate } from 'react-router-dom'
 import {auth} from "../firebase-config"
+import { isAuth } from '../context/userContext'
 
 import './css/animate.min.css'
 import './css/aos.css'
@@ -21,36 +22,49 @@ export default function Navbar() {
       await signOut(auth)
       navigate("/")
     } catch {
-      alert("For some reasons we can't deconnect, please check your internet connexion and retry.")
+      alert("For some reasons we can't disconnect, please check your internet connection and retry.")
     }
   }
-
-  return (
-    <nav>
-    <div class="container">
-    <div class="auth nav-content d-flex align-items-center">
-      <Link to="/" className="logo text-light d-flex align-items-center">
-            <i class="fas fa-gamepad"></i>
-            <h3 class="m-0">OA<span>Play</span></h3>
-      </Link>
-  
-        <button 
-        onClick={() => toggleModals("signUp")}
-        className="btn btn-primary">
-          Sign Up
-        </button>
-        <button 
-          onClick={() => toggleModals("signIn")}
-        className="btn btn-primary ms-2">
-          Sign In
-        </button>
-        <button 
-        onClick={logOut}
-        className="btn btn-danger ms-2">
-          Log Out
-        </button>
+  if (isAuth == true) {
+    return (
+      <nav>
+      <div className="container">
+      <div className="auth nav-content d-flex align-items-center">
+        <Link to="/" className="logo text-light d-flex align-items-center">
+              <i className="fas fa-gamepad"></i>
+              <h3 className="m-0">OA<span>Play</span></h3>
+        </Link>         
+          <button 
+          onClick={logOut}
+          className="btn btn-danger ms-2">
+            Log Out
+          </button>
+          </div>
         </div>
-      </div>
-    </nav>
-  )
+      </nav>
+   )}
+   else {
+    return (
+      <nav>
+      <div className="container">
+      <div className="auth nav-content d-flex align-items-center">
+        <Link to="/" className="logo text-light d-flex align-items-center">
+              <i className="fas fa-gamepad"></i>
+              <h3 className="m-0">OA<span>Play</span></h3>
+        </Link>
+    
+          <button 
+          onClick={() => toggleModals("signUp")}
+          className="btn btn-primary">
+            Sign Up
+          </button>
+          <button 
+            onClick={() => toggleModals("signIn")}
+          className="btn btn-primary ms-2">
+            Sign In
+          </button>
+          </div>
+        </div>
+      </nav>
+   )}
 }
