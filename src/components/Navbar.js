@@ -22,7 +22,7 @@ export default function Navbar() {
       await signOut(auth)
       navigate("/")
     } catch {
-      alert("For some reasons we can't disconnect, please check your internet connection and retry.")
+      alert("For some reasons we can't disconnect you, please check your internet connection and retry.")
     }
   }
   if (isAuth == true) {
@@ -39,6 +39,7 @@ export default function Navbar() {
           className="btn btn-danger ms-2">
             Log Out
           </button>
+        <Link to="/profile"><button className="btn btn-primary">profile</button></Link>  
           </div>
         </div>
       </nav>

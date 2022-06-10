@@ -81,8 +81,7 @@ export default function SignUpModal() {
                     <button
                     onClick={closeModal}
                     className="btn-close"></button>
-                  </div>
-
+                  </div>          
                   <div className="modal-body">
                     <form
                     ref= {formRef}
@@ -90,7 +89,7 @@ export default function SignUpModal() {
                     className="sign-up-form">
                       <div className="mb-3">
                         <label htmlFor="signUpEmail" className="form-label">
-                          Email adress
+                          Email address
                         </label>
                         <input
                           ref={addInputs}
@@ -99,10 +98,10 @@ export default function SignUpModal() {
                           type="email"
                           className="form-control"
                           id="signUpEmail"
+                          placeholder='email'
                         />
                         <p className="text-danger my-1"></p>
-                      </div>
-
+                      </div>   
                       <div className="mb-3">
                         <label htmlFor="signUpPwd" className="form-label">
                           Password
@@ -114,6 +113,7 @@ export default function SignUpModal() {
                           type="password"
                           className="form-control"
                           id="signUpPwd"
+                          placeholder='password'
                         />
                         <p className="text-danger my-1"></p>
                       </div>
@@ -129,12 +129,12 @@ export default function SignUpModal() {
                           type="password"
                           className="form-control"
                           id="repeatPwd"
+                          placeholder='repeat password'
                         />
                         <p className="text-danger my-1">
                           {validation}
                         </p>
                       </div>
-
                       <button className="btn btn-primary">Submit</button>
                     </form>
                   </div>

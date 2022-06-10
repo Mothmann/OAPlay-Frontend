@@ -1,9 +1,9 @@
 import { createContext, useState, useEffect, React } from "react";
-
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  updateProfile 
 } from "firebase/auth"
 import {auth} from "../firebase-config"
 
@@ -18,19 +18,24 @@ export function UserContextProvider(props) {
 
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
-  console.log("MAJ", currentUser);
+  //console.log("MAJ", currentUser);
   if (currentUser){
   isAuth = true;
   }
   else {
     isAuth = false;  
   }
-  console.log("test " + isAuth);
   useEffect(() => {
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setCurrentUser(currentUser)
       setLoadingData(false)
+      if (currentUser.displayName === null) {
+        var number = Math.floor(Math.random() * 10000) + 1;
+        updateProfile(auth.currentUser, {
+          displayName: "user" + number
+        })
+      }
     })
 
     return unsubscribe;
