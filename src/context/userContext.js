@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, React } from "react";
 
 import {
   signInWithEmailAndPassword,
@@ -8,6 +8,7 @@ import {
 import {auth} from "../firebase-config"
 
 export const UserContext = createContext()
+export var isAuth;
 
 export function UserContextProvider(props) {
 
@@ -18,6 +19,13 @@ export function UserContextProvider(props) {
   const [currentUser, setCurrentUser] = useState();
   const [loadingData, setLoadingData] = useState(true);
   console.log("MAJ", currentUser);
+  if (currentUser){
+  isAuth = true;
+  }
+  else {
+    isAuth = false;  
+  }
+  console.log("test " + isAuth);
   useEffect(() => {
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
