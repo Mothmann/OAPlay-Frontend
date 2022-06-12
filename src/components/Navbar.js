@@ -39,7 +39,7 @@ export default function Navbar() {
           className="btn btn-danger ms-2">
             Log Out
           </button>
-        <Link to="/profile"><button className="btn btn-primary">profile</button></Link>  
+        <Link to="/my-account"><button className="btn btn-primary">profile</button></Link>  
           </div>
         </div>
       </nav>
