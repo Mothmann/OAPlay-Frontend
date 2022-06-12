@@ -33,7 +33,8 @@ export function UserContextProvider(props) {
       if (currentUser.displayName === null) {
         var number = Math.floor(Math.random() * 10000) + 1;
         updateProfile(auth.currentUser, {
-          displayName: "user" + number
+          displayName: "user" + number,
+          photoURL: "https://brausermaimonides.org/wp-content/uploads/2014/12/default_profile_pic.jpg"
         })
       }
     })

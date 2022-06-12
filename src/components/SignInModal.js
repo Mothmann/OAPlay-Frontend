@@ -68,7 +68,7 @@ export default function SignUpModal() {
                   >
                     <div className="mb-3">
                       <label htmlFor="signInEmail" className="form-label">
-                        Email adress
+                        Email address
                       </label>
                       <input
                         ref={addInputs}
