@@ -4,3 +4,6 @@
 button {
     color: black;
 }
+input, select, textarea{
+    color: black;
+}
