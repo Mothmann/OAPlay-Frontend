@@ -8,6 +8,7 @@ import {auth} from "../firebase-config";
 export default function Account() {
         const [selectedImage, setSelectedImage] = useState(null);
         const {currentUser} = useContext(UserContext);
+        const[value, setValue] = useState(""); 
         console.log(currentUser);
         return (
             <div>
@@ -15,7 +16,8 @@ export default function Account() {
                 <img src={currentUser.photoURL} width="200px" height="200px" alt="profile_picture" />
                 <p>email</p>{currentUser.email}
                 <p>username</p>{currentUser.displayName}
-                <h1>Upload and Display Image</h1>
+                <br/><br/><br/>
+                <h1>Change your profile picture or your username</h1>
                 {selectedImage && (
                     <div>
                     </div>
@@ -31,6 +33,9 @@ export default function Account() {
                     }}
                 /><br />
                 <button onClick={()=>upload(selectedImage)}>upload</button>
+                <br />
+                <input value={value} onChange={(e) => {setValue(e.target.value)}} />
+                <button onClick={()=>changeUsername(value)}>Button</button>
             </div>
             
             
@@ -52,4 +57,12 @@ const upload = ( file ) => {
         .catch( error => { console.log(error) } )
 
     return apiresponse;
+}
+const changeUsername = (username) => {
+
+    updateProfile(auth.currentUser, {
+        displayName: username
+       })
+    window.location.reload();
+
 }
