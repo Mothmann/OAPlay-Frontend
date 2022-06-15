@@ -4,12 +4,15 @@ import "./css/profile.css";
 import axios from 'axios';
 import {updateProfile} from "firebase/auth";
 import {auth} from "../firebase-config";
-import { doc, updateDoc, getFirestore } from "firebase/firestore"; 
+import { doc, updateDoc, getFirestore, collection } from "firebase/firestore"; 
 
 export default function Account() {
         const [selectedImage, setSelectedImage] = useState(null);
         const {currentUser} = useContext(UserContext);
+        const db = getFirestore(); 
         const[value, setValue] = useState(""); 
+        const usersRef = collection(db, "users");
+        usersRef.where("displayName", "==", currentUser.uid)
         return (
             <div>
                 <p>profile picture</p>

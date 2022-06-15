@@ -46,7 +46,7 @@ export default function Navbar() {
         <Link to="/my-account"><button className="btn btn-primary">profile</button></Link> 
         <input value={value} onChange={(e) => {setValue(e.target.value)}} />
         <button onClick={event =>  window.location.href=`/profile/${value}`}><FontAwesomeIcon className='icon' icon={faSearch} /></button> 
-          </div>
+        </div>
         </div>
      
       </nav>
@@ -71,6 +71,8 @@ export default function Navbar() {
           className="btn btn-primary ms-2">
             Sign In
           </button>
+          <input value={value} onChange={(e) => {setValue(e.target.value)}} />
+          <button onClick={event =>  window.location.href=`/profile/${value}`}><FontAwesomeIcon className='icon' icon={faSearch} /></button> 
           </div>
         </div>
       </nav>
