@@ -1,20 +1,28 @@
-import React from 'react';
-import { collection, query, where, getFirestore } from "firebase/firestore";
-
+import React, {useState} from 'react';
+import {collection, query, where, getFirestore, onSnapshot } from "firebase/firestore";
+import { useParams } from 'react-router';
+import { getAuth } from 'firebase/auth';
 
 export default function Profile() {
+  let {username} = useParams();
+  const db = getFirestore();
+  const usersRef = collection(db, "users");
+  const [Users, setUsers] = useState([]);
+
+  const q = query(usersRef, where("displayName", "==", username));
+  onSnapshot(q, function test (snapshot) {
+    snapshot.docs.forEach((doc) => {
+      setUsers({ ...doc.data(), id: doc.id})
+    });
+  });
   return (
-    <div><h3>Profile</h3>
-      {/* <button onClick={test} className="btn btn-danger ms-2"></button> */}
+    <div><p>profile picture</p>
+    <img src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
+    <p>email</p>{Users.email}
+    <p>username</p>{Users.displayName}
     </div>
     
   )
 }
-// function test(){
-//   const db = getFirestore();
-//   const username = "test@gmail.com";
-//   const search = collection(db, "users");
-//   const q = query(search, where("email", "==", username));
-//   console.log(q);
-  
-// }
+async function test(){
+}

@@ -5,11 +5,12 @@ import {
   onAuthStateChanged,
   updateProfile 
 } from "firebase/auth"
-import {auth} from "../firebase-config"
+import {auth} from "../firebase-config";
+import { doc, setDoc, getFirestore } from "firebase/firestore"; 
 
 export const UserContext = createContext()
 export var isAuth;
-
+const db = getFirestore();
 export function UserContextProvider(props) {
 
 
@@ -35,6 +36,11 @@ export function UserContextProvider(props) {
         updateProfile(auth.currentUser, {
           displayName: "user" + number,
           photoURL: "https://brausermaimonides.org/wp-content/uploads/2014/12/default_profile_pic.jpg"
+        })
+        setDoc(doc(db, "users", currentUser.uid), {
+          email: currentUser.email,
+          displayName: "user" + number,
+          photoURL: "https://brausermaimonides.org/wp-content/uploads/2014/12/default_profile_pic.jpg",
         })
       }
     })
