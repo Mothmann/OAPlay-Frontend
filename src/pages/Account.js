@@ -4,12 +4,12 @@ import "./css/profile.css";
 import axios from 'axios';
 import {updateProfile} from "firebase/auth";
 import {auth} from "../firebase-config";
+import { doc, updateDoc, getFirestore } from "firebase/firestore"; 
 
 export default function Account() {
         const [selectedImage, setSelectedImage] = useState(null);
         const {currentUser} = useContext(UserContext);
         const[value, setValue] = useState(""); 
-        console.log(currentUser);
         return (
             <div>
                 <p>profile picture</p>
@@ -43,26 +43,37 @@ export default function Account() {
 }
 const upload = ( file ) => {
 
+    const db = getFirestore(); 
     const formData = new FormData();
     formData.append( "image", file );
 
     let apiresponse = axios.post('https://api.imgbb.com/1/upload?key=20c8203790bceb146353bb6da9ed1be3', formData )
-        .then( res => { window.location.reload();
+        .then( res => {
             var url = res.data.data.url;    
             updateProfile(auth.currentUser, {
                 photoURL: url
+            })
+            updateDoc(doc(db, "users", auth.currentUser.uid ), {
+                photoURL: url
               })
-             
+              setTimeout(function(){
+                window.location.reload();
+             }, 1000);
         } )
         .catch( error => { console.log(error) } )
 
     return apiresponse;
 }
 const changeUsername = (username) => {
-
+    const db = getFirestore(); 
     updateProfile(auth.currentUser, {
         displayName: username
-       })
-    window.location.reload();
+       }) 
+    updateDoc(doc(db, "users", auth.currentUser.uid ), {
+        displayName: username
+      })
+      setTimeout(function(){
+        window.location.reload();
+     }, 1000);
 
 }

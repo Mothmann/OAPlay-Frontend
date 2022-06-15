@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {UserContext} from "../context/userContext"
 import {Link} from "react-router-dom"
 import {signOut} from "firebase/auth"
@@ -10,12 +10,14 @@ import './css/animate.min.css'
 import './css/aos.css'
 import './css/main.css'
 import './css/home.css'
+import Profile from '../pages/Profile'
 
 export default function Navbar() {
 
   const {toggleModals} = useContext(UserContext)
 
   const navigate = useNavigate()
+  const[value, setValue] = useState(""); 
 
   const logOut = async () => {
     try {
@@ -39,9 +41,12 @@ export default function Navbar() {
           className="btn btn-danger ms-2">
             Log Out
           </button>
-        <Link to="/my-account"><button className="btn btn-primary">profile</button></Link>  
+        <Link to="/my-account"><button className="btn btn-primary">profile</button></Link> 
+        <input value={value} onChange={(e) => {setValue(e.target.value)}} />
+        <button onClick={event =>  window.location.href=`/profile/${value}`}>search</button> 
           </div>
         </div>
+     
       </nav>
    )}
    else {
