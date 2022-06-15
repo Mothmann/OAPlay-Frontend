@@ -41,7 +41,12 @@ export function UserContextProvider(props) {
           email: currentUser.email,
           displayName: "user" + number,
           photoURL: "https://brausermaimonides.org/wp-content/uploads/2014/12/default_profile_pic.jpg",
+          following: [],
+          followers: 0
         })
+      }
+      else {
+        return
       }
     })
 
