@@ -1,16 +1,18 @@
-import React, {useContext, useState} from 'react'
-import {UserContext} from "../context/userContext"
-import {Link} from "react-router-dom"
-import {signOut} from "firebase/auth"
-import { useNavigate } from 'react-router-dom'
-import {auth} from "../firebase-config"
-import { isAuth } from '../context/userContext'
+import React, {useContext, useState} from 'react';
+import {UserContext} from "../context/userContext";
+import {Link} from "react-router-dom";
+import {signOut} from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+import {auth} from "../firebase-config";
+import { isAuth } from '../context/userContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
-import './css/animate.min.css'
-import './css/aos.css'
-import './css/main.css'
-import './css/home.css'
-import Profile from '../pages/Profile'
+import './css/animate.min.css';
+import './css/aos.css';
+import './css/main.css';
+import './css/home.css';
+import './css/NavBar.css';
 
 export default function Navbar() {
 
@@ -43,7 +45,7 @@ export default function Navbar() {
           </button>
         <Link to="/my-account"><button className="btn btn-primary">profile</button></Link> 
         <input value={value} onChange={(e) => {setValue(e.target.value)}} />
-        <button onClick={event =>  window.location.href=`/profile/${value}`}>search</button> 
+        <button onClick={event =>  window.location.href=`/profile/${value}`}><FontAwesomeIcon className='icon' icon={faSearch} /></button> 
           </div>
         </div>
      

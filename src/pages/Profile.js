@@ -18,7 +18,7 @@ export default function Profile() {
   return (
     <div><p>profile picture</p>
     <img src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
-    <p>email</p>{Users.email}
+    <p>email</p><p>{Users.email}</p>
     <p>username</p>{Users.displayName}
     </div>
     
