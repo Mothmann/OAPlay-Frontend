@@ -1,9 +1,3 @@
-*{
-    color:white;
-}
-button {
-    color: black;
-}
-input, select, textarea{
-    color: black;
+body{
+    color: white
 }
