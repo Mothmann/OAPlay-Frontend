@@ -4,9 +4,9 @@
     box-sizing: border-box;
 }
 footer{
-    position: absolute;
     bottom: 0;
     height: 2.5rem;
+    margin-top: 5%;
     background: #111;
     height: auto;
     width: 100w;
