@@ -9,16 +9,13 @@ import { doc, updateDoc, getFirestore, collection } from "firebase/firestore";
 export default function Account() {
         const [selectedImage, setSelectedImage] = useState(null);
         const {currentUser} = useContext(UserContext);
-        const db = getFirestore(); 
         const[value, setValue] = useState(""); 
-        const usersRef = collection(db, "users");
-        usersRef.where("displayName", "==", currentUser.uid)
         return (
             <div>
-                <p>profile picture</p>
+                <br></br><br></br><h1>profile picture</h1>
                 <img src={currentUser.photoURL} width="200px" height="200px" alt="profile_picture" />
-                <p>email</p>{currentUser.email}
-                <p>username</p>{currentUser.displayName}
+                <p>email : {currentUser.email}</p>
+                <p>username : {currentUser.displayName} </p>
                 <br/><br/><br/>
                 <h1>Change your profile picture or your username</h1>
                 {selectedImage && (
@@ -27,6 +24,7 @@ export default function Account() {
                 )}
                 <br />
                 <br /> 
+                
                 <input
                     type="file"
                     name="myImage"
@@ -34,15 +32,20 @@ export default function Account() {
                     console.log(event.target.files[0]);
                     setSelectedImage(event.target.files[0]);
                     }}
-                /><br />
-                <button onClick={()=>upload(selectedImage)}>upload</button>
+                /><button onClick={()=>upload(selectedImage)}
+                className="btn btn-primary">
+                    upload</button><br />
                 <br />
                 <input value={value} onChange={(e) => {setValue(e.target.value)}} />
-                <button onClick={()=>changeUsername(value)}>Button</button>
+                <button onClick={()=>changeUsername(value)}
+                className="btn btn-primary">
+                    NewUsername
+                </button>
             </div>
             
             
         );
+            
 }
 const upload = ( file ) => {
 
