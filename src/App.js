@@ -1,6 +1,7 @@
 import {Routes, Route} from "react-router-dom"
 import Home from "./pages/Home"
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import Footer from './components/footer';
 import SignUpModal from "./components/SignUpModal";
 import SignInModal from "./components/SignInModal"
 import Private from "./pages/Private/Private"
@@ -23,6 +24,7 @@ function App() {
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>
       </Routes>
+      <Footer />
     </>
   );
 }
