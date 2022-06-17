@@ -11,7 +11,8 @@ export default function Private() {
         return <Navigate to="/" />
     }
     return (
-        <div className="container">
+        <div className="home container">
+
             <Outlet />
         </div>
     )

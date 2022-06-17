@@ -6,7 +6,7 @@ import './css/footer.css';
 
 function footer() {
     return (
-        <footer>
+        <footer className='foot'>
         <div className="footer-content">
             <h3>JumpTech</h3>
             <p>JumpTech, association of young intellectuals with complementary skills in the world of technology.</p>

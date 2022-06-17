@@ -1,13 +1,18 @@
-body{
+#start{
+    margin-top: 5%;
+}
+
+.follow{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+.not-follow{
     color: white;
-    position: relative;
-    min-height: 100vh;
 }
-*{
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-img {
-    border-radius: 50%;
+.followed{
+    color: green;
 }

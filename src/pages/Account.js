@@ -1,8 +1,9 @@
 import React, {useContext, useState} from 'react';
 import { UserContext } from '../context/userContext';
-import "./css/profile.css";
+import "./css/account.css";
 import axios from 'axios';
 import {updateProfile} from "firebase/auth";
+import { Navigate} from "react-router-dom";
 import {auth} from "../firebase-config";
 import { doc, updateDoc, getFirestore, collection } from "firebase/firestore"; 
 
@@ -10,10 +11,13 @@ export default function Account() {
         const [selectedImage, setSelectedImage] = useState(null);
         const {currentUser} = useContext(UserContext);
         const[value, setValue] = useState(""); 
+        if(!currentUser) {
+            return <Navigate to="/" />
+        }
         return (
             <div>
                 <br></br><br></br><h1>profile picture</h1>
-                <img src={currentUser.photoURL} width="200px" height="200px" alt="profile_picture" />
+                <img id="photo" src={currentUser.photoURL} width="200px" height="200px" alt="profile_picture" />
                 <p>email : {currentUser.email}</p>
                 <p>username : {currentUser.displayName} </p>
                 <br/><br/><br/>
@@ -36,9 +40,9 @@ export default function Account() {
                 className="btn btn-primary">
                     upload</button><br />
                 <br />
-                <input value={value} onChange={(e) => {setValue(e.target.value)}} />
-                <button onClick={()=>changeUsername(value)}
-                className="btn btn-primary">
+                <input id="newusername" value={value} onChange={(e) => {setValue(e.target.value)}} />
+                <button width="10px" onClick={()=>changeUsername(value)}
+                className="username btn btn-primary">
                     NewUsername
                 </button>
             </div>

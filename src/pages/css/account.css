@@ -1,0 +1,19 @@
+body{
+    color: white;
+    position: relative;
+    min-height: 100vh;
+}
+*{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#photo {
+    border-radius: 50%;
+}
+.username {
+    margin-left: 100px;
+}
+#newusername{
+    margin-left: 25px;
+}
