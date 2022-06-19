@@ -9,6 +9,7 @@ import PrivateHome from "./pages/Private/PrivateHome/PrivateHome";
 import Account from "./pages/Account";
 import Profile from "./pages/Profile";
 import React from 'react';
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/my-account" element={<Account />} />
         <Route path="/profile/:username" element={<Profile />} />
+        <Route path="/pay" element={<Payment />} />
         <Route path="/private" element={<Private />}>
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>
