@@ -21,6 +21,7 @@ export default function Profile() {
       setUsers({ ...doc.data(), id: doc.id})
     });
   });
+  if (isAuth == true){
   const q2 = query(usersRef, where("displayName", "==", currentUser.displayName));
   onSnapshot(q2, (snapshot) => {
     snapshot.docs.forEach((doc) => {
@@ -35,7 +36,7 @@ export default function Profile() {
     }
     })
   })
-  console.log(follows);
+}
 
   if (isAuth == true && follows == false){
     return (

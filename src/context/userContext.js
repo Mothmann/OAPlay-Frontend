@@ -31,7 +31,7 @@ export function UserContextProvider(props) {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setCurrentUser(currentUser)
       setLoadingData(false)
-      if (currentUser.displayName === null) {
+      if (currentUser.displayName === null && isAuth == true) {
         var number = Math.floor(Math.random() * 10000) + 1;
         updateProfile(auth.currentUser, {
           displayName: "user" + number,

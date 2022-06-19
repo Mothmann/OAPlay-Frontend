@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="auth nav-content d-flex align-items-center">
         <Link to="/" className="logo text-light d-flex align-items-center">
               <i className="fas fa-gamepad"></i>
-              <h3 className="m-0">OA<span>Play</span></h3>
+              <img id='logo' src="https://i.ibb.co/M6twcJP/logo.png" alt="logo"></img>
         </Link> 
         <div className='recherche'>
         <input value={value} onChange={(e) => {setValue(e.target.value)}} />
@@ -61,7 +61,7 @@ export default function Navbar() {
       <div className="auth nav-content d-flex align-items-center">
         <Link to="/" className="logo text-light d-flex align-items-center">
               <i className="fas fa-gamepad"></i>
-              <h3 className="m-0">OA<span>Play</span></h3>
+              <img id='logo' src="https://i.ibb.co/M6twcJP/logo.png" alt="logo"></img>
         </Link>
         <div className='recherche'>
         <input alt="test" value={value} onChange={(e) => {setValue(e.target.value)}} />
