@@ -7,11 +7,13 @@ const public_key = "pk_test_51LBlxiIJgwmtmpLuRk3LBt4Bn7awWF0l2KaDWRheu7IvtPO4nuo
 
 const stripeTestPromise = loadStripe(public_key);
 
-function Stripe() {
-   
+function Stripe(props) {
+    
+    var amount = props.amount;
+
     return (
         <Elements stripe={stripeTestPromise}>
-            <PaymentForm />
+            <PaymentForm amount={amount}/>
         </Elements>
     );
 }

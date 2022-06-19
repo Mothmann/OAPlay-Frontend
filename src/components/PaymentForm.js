@@ -1,7 +1,9 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
-import axios from "axios"
-import React, { useState } from 'react'
-import "./css/paymentform.css"
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import axios from "axios";
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../context/userContext';
+import "./css/paymentform.css";
+import {getFirestore, increment, updateDoc, doc } from "firebase/firestore";
 
 const CARD_OPTIONS = {
 	iconStyle: "solid",
@@ -23,10 +25,13 @@ const CARD_OPTIONS = {
 	}
 }
 
-export default function PaymentForm() {
-    const [success, setSuccess ] = useState(false)
-    const stripe = useStripe()
-    const elements = useElements()
+export default function PaymentForm(props) {
+    const [success, setSuccess ] = useState(false);
+    const stripe = useStripe();
+    const elements = useElements();
+    var amount = props.amount * 1000;
+    const db = getFirestore();
+    const {currentUser} = useContext(UserContext);
 
 
     const handleSubmit = async (e) => {
@@ -36,24 +41,31 @@ export default function PaymentForm() {
             card: elements.getElement(CardElement)
         })
 
-
+    const coin = () => {
+        let usersRef = doc(db, "users", currentUser.uid);
+        updateDoc(usersRef, {
+            coins: increment(amount/100)
+        });
+    }
     if(!error) {
         try {
             const {id} = paymentMethod
             const response = await axios.post("http://localhost:5000/pay", {
-                amount: 1000,
+                amount: amount,
                 id
             })
 
             if(response.data.success) {
-                console.log("Successful payment")
-                setSuccess(true)
+                setSuccess(true);
+                coin();
+                console.log("success");
             }
 
         } catch (error) {
             console.log("Error", error)
         }
     } else {
+        alert("An error has been occured, please try again later");
         console.log(error.message)
     }
 }
@@ -69,7 +81,7 @@ export default function PaymentForm() {
         </form>
         :
        <div>
-           <h2>you donated!</h2>
+           <h2>you bought {amount} coins</h2>
        </div> 
         }
             

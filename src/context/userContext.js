@@ -42,7 +42,8 @@ export function UserContextProvider(props) {
           displayName: "user" + number,
           photoURL: "https://brausermaimonides.org/wp-content/uploads/2014/12/default_profile_pic.jpg",
           following: [],
-          followers: 0
+          followers: 0,
+          coins: 0,
         })
       }
       else {

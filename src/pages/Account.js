@@ -1,25 +1,38 @@
 import React, {useContext, useState} from 'react';
 import { UserContext } from '../context/userContext';
 import "./css/account.css";
+import {Link} from "react-router-dom";
 import axios from 'axios';
 import {updateProfile} from "firebase/auth";
 import { Navigate} from "react-router-dom";
+import {collection, query, where, getFirestore, onSnapshot, increment, updateDoc, doc, arrayUnion, arrayRemove } from "firebase/firestore";
 import {auth} from "../firebase-config";
-import { doc, updateDoc, getFirestore, collection } from "firebase/firestore"; 
+import coin from "./images/coin.png";
 
 export default function Account() {
         const [selectedImage, setSelectedImage] = useState(null);
         const {currentUser} = useContext(UserContext);
+        const [Users, setUsers] = useState([]);
         const[value, setValue] = useState(""); 
+        const db = getFirestore();
+        const usersRef = collection(db, "users");
+        const q = query(usersRef, where("displayName", "==", currentUser.displayName));
+
+        onSnapshot(q, (snapshot) => {
+            snapshot.docs.forEach((doc) => {
+            setUsers({ ...doc.data(), id: doc.id})
+            });
+        });
+
         if(!currentUser) {
             return <Navigate to="/" />
         }
         return (
             <div>
-                <br></br><br></br><h1>profile picture</h1>
-                <img id="photo" src={currentUser.photoURL} width="200px" height="200px" alt="profile_picture" />
-                <p>email : {currentUser.email}</p>
-                <p>username : {currentUser.displayName} </p>
+                <br></br><br></br><h1>profile picture</h1> <br />
+                <img id="photo" src={currentUser.photoURL} width="200px" height="200px" alt="profile_picture" /> <br /> <br />
+                <p>{currentUser.displayName} </p>
+                &nbsp; {Users.coins} &nbsp; <img src={coin} width="50px" alt="" /> <Link to="/coins"> &nbsp; &nbsp; <button id='pay'>buy more coins</button> </Link>
                 <br/><br/><br/>
                 <h1>Change your profile picture or your username</h1>
                 {selectedImage && (
