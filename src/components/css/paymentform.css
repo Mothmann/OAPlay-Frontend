@@ -1,3 +1,17 @@
 .credit-card{
-
+    margin: 2%;
+    padding: 2%;
+    background-color: #ffb700db;
+    border-radius: 25px;
+}
+#pay{
+    font-size: 20px;
+    border-radius: 25px;
+    background-color: #ffaa00;
+    font-weight:bold;
+    padding:0.5rem 1.5rem;
+    border: none;
+}
+#pay:hover{
+    background-color: #ffaa00db;
 }

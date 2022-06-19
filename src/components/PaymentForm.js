@@ -7,18 +7,18 @@ const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
 		base: {
-			iconColor: "#c4f0ff",
-			color: "#fff",
+			iconColor: "black",
+			color: "black",
 			fontWeight: 500,
 			fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-			fontSize: "16px",
+			fontSize: "34px",
 			fontSmoothing: "antialiased",
-			":-webkit-autofill": { color: "#fce883" },
-			"::placeholder": { color: "#87bbfd" }
+			":-webkit-autofill": { color: "black" },
+			"::placeholder": { color: "black" }
 		},
 		invalid: {
-			iconColor: "#ffc7ee",
-			color: "#ffc7ee"
+			iconColor: "black",
+			color: "black"
 		}
 	}
 }
@@ -40,7 +40,7 @@ export default function PaymentForm() {
     if(!error) {
         try {
             const {id} = paymentMethod
-            const response = await axios.post("http://localhost:4000/payment", {
+            const response = await axios.post("http://localhost:5000/pay", {
                 amount: 1000,
                 id
             })
@@ -65,7 +65,7 @@ export default function PaymentForm() {
             <fieldset className="credit-card">         
                     <CardElement options={CARD_OPTIONS}/>
             </fieldset>
-            <button>Pay</button>
+            <button id="pay">Pay</button>
         </form>
         :
        <div>
