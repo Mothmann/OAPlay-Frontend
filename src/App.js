@@ -21,7 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/my-account" element={<Account />} />
         <Route path="/profile/:username" element={<Profile />} />
-        <Route path="/pay" element={<Payment />} />
+        <Route path="/coins" element={<Payment />} />
         <Route path="/private" element={<Private />}>
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>
