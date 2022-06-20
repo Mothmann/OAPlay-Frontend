@@ -53,11 +53,14 @@ export default function Profile() {
         <div id='start'></div>
       <p>profile picture</p>
       <img id="photo" src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
-      <br />
+      <br /> <br />
       {Users.displayName}
-      <br />
+      <br /> <br />
       {Users.followers} followers  &nbsp;
       <button className="follow" onClick={()=>follow(currentUser.uid, username, Users.id)}><FontAwesomeIcon className='not-follow icon' icon={faThumbsUp} /></button>
+      <br /> <br />
+      <input type="text" value={amount} onChange={(e) => {setAmount(e.target.value)}} name="value" id="input-pay" />
+      <button onClick={()=>sendCoins(currentUser.uid, Users.id, amount, checker)} id='pay'>send coins</button>
       </div>
     )
 
