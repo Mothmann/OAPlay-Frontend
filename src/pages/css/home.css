@@ -1,3 +1,51 @@
 .home{
     margin-bottom: 600px;
 }
+.moviesection{
+    margin-top: 100px;
+}
+
+.moviesection{
+    max-width: 900px;
+    text-transform: uppercase;
+    padding-left: 15%;
+    color: white;
+}
+
+hr.rounded{
+    border-top: 3px solid #ffaa00;
+    border-radius: 5px;
+    
+}
+.category-title{
+    margin-left: 87%;
+}
+.movieimg .myimages{
+
+    height: 280px;
+    width: 300px;
+    margin-bottom: 3%;
+
+}
+.movieimg .myimages img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.movieimg{
+    float: left;
+    width: 30%;
+    padding: 15px;
+    max-width: max-content;
+    padding-left: 5px;
+}
+.moviecontainer::after{
+    content: "";
+    clear: both;
+    display: table;
+}
+.moviecontainer{
+    height: max-content;
+    width: max-content;
+}
