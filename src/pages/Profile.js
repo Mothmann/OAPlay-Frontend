@@ -6,6 +6,7 @@ import { isAuth } from '../context/userContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faThumbsUp} from "@fortawesome/free-solid-svg-icons";
 import "./css/profile.css";
+import StreamComponent from "../components/stream";
 
 export default function Profile() {
   let {username} = useParams();
@@ -23,6 +24,7 @@ export default function Profile() {
       setUsers({ ...doc.data(), id: doc.id})
     });
   });
+
   if (isAuth == true){
   const q2 = query(usersRef, where("displayName", "==", currentUser.displayName));
   onSnapshot(q2, (snapshot) => {
@@ -45,9 +47,10 @@ export default function Profile() {
     })
   })
 
-}
+} 
 
   if (isAuth == true && follows == false){
+    
     return (
       <div>
         <div id='start'></div>
@@ -61,10 +64,21 @@ export default function Profile() {
       <br /> <br />
       <input type="text" value={amount} onChange={(e) => {setAmount(e.target.value)}} name="value" id="input-pay" />
       <button onClick={()=>sendCoins(currentUser.uid, Users.id, amount, checker)} id='pay'>send coins</button>
+      {Users.isStreaming ? (
+        <div>
+        <StreamComponent id={Users.id}/>
+        </div>
+      ) : (
+        <div>
+          <br /> <br />
+        <p>this user is not streaming</p>
+        </div>
+      )} 
       </div>
     )
 
   }
+  
   else if (isAuth == true && follows == true){
     return (
       <div>
@@ -78,6 +92,15 @@ export default function Profile() {
       <br /> <br />
       <input type="text" value={amount} onChange={(e) => {setAmount(e.target.value)}} name="value" id="input-pay" />
       <button onClick={()=>sendCoins(currentUser.uid, Users.id, amount, checker)} id='pay'>send coins</button>
+      
+      {Users.isStreaming ? (
+        <StreamComponent id={Users.id}/>
+      ) : (
+        <div>
+          <br /> <br />
+        <p>this user is not streaming</p>
+        </div>
+      )} 
       </div>
     )
 
@@ -90,9 +113,18 @@ export default function Profile() {
     <img src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
     <p>email</p><p>{Users.email}</p>
     <p>username</p>{Users.displayName}
+    {Users.isStreaming ? (
+        <StreamComponent id={Users.id}/>
+      ) : (
+        <div>
+          <br /> <br />
+        <p>this user is not streaming</p>
+        </div>
+      )} 
     </div> 
   )
   }
+  
 }
 const sendCoins = (id, uid, amount, checker) => {
   if (amount > checker){
@@ -133,3 +165,5 @@ const unfollow = (id, username, uid) => {
     followers: increment(-1)
   })
 }
+
+

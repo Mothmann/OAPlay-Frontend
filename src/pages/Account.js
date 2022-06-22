@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import axios from 'axios';
 import {updateProfile} from "firebase/auth";
 import { Navigate} from "react-router-dom";
-import {collection, query, where, getFirestore, onSnapshot, increment, updateDoc, doc, arrayUnion, arrayRemove } from "firebase/firestore";
+import {collection, query, where, getFirestore, onSnapshot, limit, updateDoc, doc, orderBy } from "firebase/firestore";
 import {auth} from "../firebase-config";
 import coin from "./images/coin.png";
 
@@ -17,12 +17,12 @@ export default function Account() {
         const db = getFirestore();
         const usersRef = collection(db, "users");
         const q = query(usersRef, where("displayName", "==", currentUser.displayName));
-
+        
         onSnapshot(q, (snapshot) => {
             snapshot.docs.forEach((doc) => {
             setUsers({ ...doc.data(), id: doc.id})
             });
-        });
+        }); 
 
         if(!currentUser) {
             return <Navigate to="/" />
