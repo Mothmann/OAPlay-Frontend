@@ -10,6 +10,9 @@ import Account from "./pages/Account";
 import Profile from "./pages/Profile";
 import React from 'react';
 import Payment from "./pages/Payment";
+// import Stream from "./pages/stream";
+// import Lobby from "./pages/lobby.js";
+// import Room from "./pages/Room";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
         <Route path="/my-account" element={<Account />} />
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/coins" element={<Payment />} />
+        {/* <Route path="/stream" element={<Stream />} />
+        <Route path="/lobby" element={<Lobby />} />
+        <Route path="/room/:roomId" element={<Room />} /> */}
         <Route path="/private" element={<Private />}>
           <Route path="/private/private-home" element={<PrivateHome />} />
         </Route>

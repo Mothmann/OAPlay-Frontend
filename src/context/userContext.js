@@ -44,6 +44,7 @@ export function UserContextProvider(props) {
           following: [],
           followers: 0,
           coins: 0,
+          isStreaming: false,
         })
       }
       else {

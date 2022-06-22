@@ -2,7 +2,7 @@
     margin-left: 60px;
 }
 .nav{
-    margin-left: 500px;
+    margin-left: 300px;
 }
 .nav1{
     margin-left: 700px;
@@ -12,4 +12,7 @@
     margin-bottom: 0%;
     width: 90px;
     
+}
+.stream-button{
+    margin-left: 10px;
 }

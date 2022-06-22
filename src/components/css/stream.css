@@ -1,0 +1,6 @@
+.stream {
+    margin-top: 50px;
+    aspect-ratio: 16/9; 
+    height: 70vh; 
+    min-height: 340px;
+}
