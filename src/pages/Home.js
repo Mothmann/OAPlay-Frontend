@@ -1,11 +1,60 @@
 import React from "react";
 import "./css/home.css";
-
-import "./css/home.css";
 export default function Home() {
   //const {currentUser} = useContext(UserContext)
   return (
-    <div classNameName="home"> 
+    <div className="home">
+    <div className="main-header">
+      <div className="overlay"></div>
+      <div className="container">
+        <div
+          className="header-content d-flex flex-column justify-content-center animate__animated animate__fadeInRight animate__delay-2s"
+        >
+          <h1 id="title">The Best <span id="title">Streams</span> Out There</h1>
+          <p>
+            Welcome to OAPlay Gaming, the home of every gamer. You can find any game you want here.
+          </p>
+          <button id="pay">Browse</button>
+        </div>
+      </div>
+    </div>
+    <section className="news d-flex align-items-center">
+      
+      <div className="news-title d-none d-sm-block">
+        <h4>Latest News</h4>
+      </div>
+      
+      <div className="news-wrap flex-grow-1">
+        <div className="news-container d-flex align-items-center">
+          
+          <div className="item d-flex align-items-center">
+            <span>NEW</span>
+            <p>Feel the polygonal burn as super-speed graphics games.</p>
+          </div>
+          
+          <div className="item d-flex align-items-center">
+            <span>STRATEGY</span>
+            <p>Based on anything from real-world racing leagues.</p>
+          </div>
+          
+          <div className="item d-flex align-items-center">
+            <span>RACING</span>
+            <p>Collection of awesome sports cars are 3D racing games.</p>
+          </div>
+          
+          <div className="item d-flex align-items-center">
+            <span>ACTION</span>
+            <p>It’s time to jump behind the wheel in our pulse-pounding Racing games!</p>
+          </div>
+          
+          <div className="item d-flex align-items-center">
+            <span>ADVENTURE</span>
+            <p>Have you got the skills to beat these tough driving challenges?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
         <section className="moviesection">
           <h2 className="category-title">GUERRE</h2>
           <hr width="200%" className=" rounded" />

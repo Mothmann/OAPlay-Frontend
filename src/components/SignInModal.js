@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useState } from "react";
 import { UserContext } from "../context/userContext";
+import "./css/sign-in.css"
 import { useNavigate } from "react-router-dom";
 
 export default function SignUpModal() {
@@ -44,7 +45,7 @@ export default function SignUpModal() {
   return (
     <>
       {modalState.signInModal && (
-        <div className="position-fixed top-0 vw-100 vh-100">
+        <div className="sign-in position-fixed top-0 vw-100 vh-100">
           <div
             onClick={closeModal}
             className="w-100 h-100 bg-dark bg-opacity-75"
