@@ -188,8 +188,8 @@ export default function Home() {
                   />
                 </a>
               </div>
-              <h2>ASSASSINS CREED</h2>
-              <span>ASSASSINS CREED 2</span>
+              <h2>ASSASSINS CREED VALHALLA</h2>
+              <span>ASSASSINS CREED VALHALLA</span>
             </div>
             <div className="movieimg">
               <div className="myimages">
@@ -205,10 +205,10 @@ export default function Home() {
             </div>
             <div className="movieimg">
                         <div className ="myimages">
-                            <a href="https://www.youtube.com/watch?v=GXglEB8gHVQ"><img src="https://i.pinimg.com/originals/dd/cb/0b/ddcb0baef816057f07d262d61a4ea1ad.jpg" alt="GOD OF WORLD" /></a>
+                            <a href="https://www.youtube.com/watch?v=GXglEB8gHVQ"><img src="https://i.pinimg.com/originals/dd/cb/0b/ddcb0baef816057f07d262d61a4ea1ad.jpg" alt="GOD OF WAR" /></a>
                         </div>
-                        <h2>GOD OF WORLD</h2>
-                        <span>GOD OF WORLD 2K20</span>
+                        <h2>GOD OF WAR</h2>
+                        <span>GOD OF WAR</span>
             </div>
            </div>
         </section>

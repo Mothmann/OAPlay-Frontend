@@ -53,7 +53,7 @@ export default function Profile() {
     
     return (
       <div>
-        <div id='start'></div>
+      <div id='start'></div>
       <img id="photo" src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
       <br /> <br />
       <h1>{Users.displayName}</h1>
@@ -84,10 +84,10 @@ export default function Profile() {
         <div id='start'></div>
       <img id="photo" src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
       <br /> <br /> 
-      {Users.displayName}
+      <h1>{Users.displayName}</h1>
       <br /> <br />
-      {Users.followers} followers  &nbsp;
-      <button onClick={()=>unfollow(currentUser.uid, username, Users.id)} className='follow'><FontAwesomeIcon className='followed icon' icon={faThumbsUp} /></button>
+      <h3>{Users.followers} followers  &nbsp;
+      <button onClick={()=>unfollow(currentUser.uid, username, Users.id)} className='follow'><FontAwesomeIcon className='followed icon' icon={faThumbsUp} /></button></h3>
       <br /> <br />
       <input type="text" value={amount} onChange={(e) => {setAmount(e.target.value)}} name="value" id="input-pay" />
       <button onClick={()=>sendCoins(currentUser.uid, Users.id, amount, checker)} id='pay'>send coins</button>
@@ -108,16 +108,15 @@ export default function Profile() {
   return (
     <div>
       <div id='start'></div>
-    <p>profile picture</p>
-    <img src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
-    <p>email</p><p>{Users.email}</p>
-    <p>username</p>{Users.displayName}
+    <img id='photo' src={Users.photoURL} width="200px" height="200px" alt="profile_picture" />
+    <h1>{Users.displayName}</h1>
+    <h3>{Users.followers} followers</h3>
     {Users.isStreaming ? (
         <StreamComponent id={Users.id}/>
       ) : (
         <div>
           <br /> <br />
-        <p>this user is not streaming</p>
+        <h3>this user is not streaming</h3>
         </div>
       )} 
     </div> 
