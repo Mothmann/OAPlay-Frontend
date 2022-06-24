@@ -1,7 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import "./css/home.css";
+import {collection, query, where, getFirestore, onSnapshot, increment, updateDoc, doc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { useCollectionData } from 'react-firebase-hooks/firestore';
+
+
 export default function Home() {
   //const {currentUser} = useContext(UserContext)
+  
+  const db = getFirestore();
+  const userRef = collection(db, "users");
+  const q = query(userRef, where("isStreaming", "==", true));
+  const [streamers] = useCollectionData(q, {idField : "id"});
+  var streaming = true;
+  
+  if (streamers >= 0) {
+      streaming = false;
+  }
+
+  console.log(streamers);
+
   return (
     <div className="home">
     <div className="main-header">
@@ -54,7 +71,20 @@ export default function Home() {
         </div>
       </div>
     </section>
+    {streaming ? (
+      <section className="moviesection">
+      <h2 className="category-title">Live</h2>
+      <hr width="200%" className="rounded" />
+      <div className="moviecontainer1 streamers">
+      {streamers && streamers.map(stream => <Streaming stream={stream} key={stream.id}  />)}
+      </div>
+      </section>
+    ) : (
+      <div></div>
+    )}
     
+    <section className="moviesection">
+      </section>
         <section className="moviesection">
           <h2 className="category-title">GUERRE</h2>
           <hr width="200%" className=" rounded" />
@@ -188,7 +218,7 @@ export default function Home() {
                   />
                 </a>
               </div>
-              <h2>ASSASSINS CREED VALHALLA</h2>
+              <h2>ASSASSINS CREED</h2>
               <span>ASSASSINS CREED VALHALLA</span>
             </div>
             <div className="movieimg">
@@ -214,4 +244,20 @@ export default function Home() {
         </section>
       </div>
   );
+}
+function Streaming(props) {
+
+  const { displayName, photoURL } = props.stream;
+  return (<>
+    <div className="moviecontainer" id="movies">
+    <div className="movieimg">
+    <div className="myimages">
+    <a href={`/profile/${displayName}`}> 
+      <img alt="profile_picture" src={photoURL} />
+    </a>
+    </div>
+      <h2>{displayName}</h2>
+    </div>
+    </div>
+  </>)
 }
