@@ -9,7 +9,7 @@ function Payment() {
 
     return (
         <div className='payment'>
-            <h1>Buy coins</h1> <br />
+            <h1>Buy coins</h1><br />
             {showItem ? (
                     <Stripe amount={amount} /> 
             ) : ( 

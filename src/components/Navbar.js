@@ -84,10 +84,11 @@ export default function Navbar() {
             userId: null,  
           });
         setStreaming(false);
-        updateDoc( userDoc, 
+        updateDoc(userDoc, 
           {
             isStreaming: false,
           })
+          window.setTimeout(function(){location.reload()},1000)
     }
     
     return (
