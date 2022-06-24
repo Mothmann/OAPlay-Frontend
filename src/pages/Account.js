@@ -27,14 +27,13 @@ export default function Account() {
         if(!currentUser) {
             return <Navigate to="/" />
         }
-        return (
+        return (    
             <div>
-                <br></br><br></br><h1>profile picture</h1> <br />
+                <br></br><br></br><br />
                 <img id="photo" src={currentUser.photoURL} width="200px" height="200px" alt="profile_picture" /> <br /> <br />
-                <p>{currentUser.displayName} </p>
+                <h1>{currentUser.displayName} </h1>
                 &nbsp; {Users.coins} &nbsp; <img src={coin} width="50px" alt="" /> <Link to="/coins"> &nbsp; &nbsp; <button id='pay'>buy more coins</button> </Link>
                 <br/><br/><br/>
-                <h1>Change your profile picture or your username</h1>
                 {selectedImage && (
                     <div>
                     </div>

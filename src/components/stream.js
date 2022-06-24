@@ -1,6 +1,7 @@
 import {collection, query, where, getFirestore, onSnapshot, increment, updateDoc, doc, arrayUnion, arrayRemove } from "firebase/firestore";
 import React, {useState} from 'react';
 import "./css/stream.css";
+import Chat from "./chat";
 
 export default function stream(props) {
     
@@ -16,10 +17,12 @@ export default function stream(props) {
     });
 
   return (
-    <div>
-    <iframe className='stream' src={`https://player.castr.com/live_${live.url_key}`} 
+    <div className="steam_chat">
+    <iframe style={{  marginLeft: "-30%"  }} className='stream' src={`https://player.castr.com/live_${live.url_key}`} 
     frameBorder={0} scrolling="no" allow="autoplay" allowFullScreen webkitallowfullscreen 
-    mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+    mozallowfullscreen oallowfullscreen msallowfullscreen>
+    </iframe>
+    <Chat className="stream_chat" streamId={live.id} />
     </div>
   )
 }

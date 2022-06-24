@@ -1,0 +1,107 @@
+
+
+
+  .form {
+    height: 10vh;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+    display: flex;
+    font-size: 1.5rem;
+  }
+
+  .form button{
+    margin-top: 0.75%;
+  }
+
+  
+  .message {
+    line-height: 1.5;
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+
+  }
+  .messages{
+    margin-top: 20px;
+  }
+
+  .send {
+    background-color: #282c34; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 1.25rem;
+  }
+  
+  .send:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  
+  .sign-in {
+    color: #282c34;
+    background: white;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  
+  
+  
+  ul, li {
+    text-align: left;
+    list-style: none;
+  }
+  
+  .messages {
+    max-width: 500px;
+    margin-bottom: 12px;
+    line-height: 24px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+    color: white;
+    text-align: center;
+  }
+  
+  .message {
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .sent {
+    flex-direction: row-reverse;
+  }
+  
+  .sent p {
+    color: white;
+    background: #0b93f6;
+    align-self: flex-end;
+  }
+  .received p {
+    background: #e5e5ea;
+    color: black;
+  }
+  
+  #photo-chat {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 2px 5px;
+  }
+  @media only screen and (max-width: 1890px) {
+    #chatBox{
+      margin: 0 !important;
+    }
+    .stream{
+      margin-left: 0 !important;
+    }
+  }
