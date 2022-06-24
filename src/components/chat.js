@@ -1,21 +1,20 @@
-import React, {useContext, useState, useRef} from 'react';
+import React, {useContext, useState} from 'react';
 import {UserContext} from "../context/userContext";
 import { isAuth } from '../context/userContext';
-import {collection, query, where, getFirestore,serverTimestamp, updateDoc, onSnapshot , limit, doc, orderBy, addDoc } from "firebase/firestore";
+import {collection, query, where, getFirestore,serverTimestamp, onSnapshot , limit, orderBy, addDoc } from "firebase/firestore";
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import "./css/chat.css";
 
 export default function chat(props) {
 
     if (isAuth == true) {
-        const dummy = useRef();
         const db = getFirestore();
         const [User, setUser] = useState([]);
         const {currentUser} = useContext(UserContext);
         const usersRef = collection(db, "users");
         const q2 = query(usersRef, where("displayName", "==", currentUser.displayName));
         const messagesRef = collection(db, "chat");
-        const q = query(messagesRef,orderBy("createdAt", "desc"), limit(25)); 
+        const q = query(messagesRef,orderBy("createdAt", "desc"), limit(5)); 
         const [messages] = useCollectionData(q, {idField : "id"});
         const [formValue, setFormValue] = useState("");
         const streamId = props.streamId;
@@ -61,8 +60,7 @@ function ChatMessage(props) {
     const { text, user_id, photoURL, streamId } = props.message;
     const {currentUser} = useContext(UserContext);
     const messageClass = user_id === currentUser.uid ? 'sent' : 'received';
-    if (streamId == props.streamId) {
-    
+    if (streamId == props.streamId) { 
     return (<>
       <div  id='chat' className={`message ${messageClass}`} >
         <img id="photo-chat" src={photoURL} />
