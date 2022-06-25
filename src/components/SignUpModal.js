@@ -65,7 +65,7 @@ export default function SignUpModal() {
       {modalState.signUpModal && (
 
       
-        <div className="position-fixed top-0 vw-100 vh-100">
+        <div id="sign-in" className="position-fixed top-0 vw-100 vh-100">
           <div
           onClick={closeModal}
           className="w-100 h-100 bg-dark bg-opacity-75">
