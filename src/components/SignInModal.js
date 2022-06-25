@@ -1,6 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
 import { UserContext } from "../context/userContext";
 import { useNavigate } from "react-router-dom";
+import "./css/sign-in.css"
 
 export default function SignUpModal() {
   const { modalState, toggleModals, signIn } = useContext(UserContext);
@@ -44,7 +45,7 @@ export default function SignUpModal() {
   return (
     <>
       {modalState.signInModal && (
-        <div className="position-fixed top-0 vw-100 vh-100">
+        <div id="sign-in" className="position-fixed top-0 vw-100 vh-100">
           <div
             onClick={closeModal}
             className="w-100 h-100 bg-dark bg-opacity-75"
@@ -56,7 +57,7 @@ export default function SignUpModal() {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Sign Up</h5>
+                  <h5 className="modal-title">Sign In</h5>
                   <button onClick={closeModal} className="btn-close"></button>
                 </div>
 
